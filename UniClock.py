@@ -1,8 +1,5 @@
 # UniClock: United Clock (for timing, date calculate)
-
 import time
-
-VERSION = "UniClock v0.1 (Build 20190514.1) Dev"
 
 
 class UniClock(object):
@@ -26,24 +23,9 @@ class UniClock(object):
         self.start()
         return self
 
-    def __exit__(self, exc_type, exc_value, exc_tb):
+    def __exit__(self, exc_type, exc_value, exc_tb): # type: ignore
         self.stop()
 
     @staticmethod
     def now():
         return time.time()
-
-
-def TimeFormat(second):
-    second = int(second)
-    if second < 60:
-        return "{}s".format(second)
-    elif second < 3600:
-        minute = int(second / 60)
-        second = int(second % 60)
-        return "{}m{}s".format(minute, second)
-    else:
-        hour = int(second / 3600)
-        minute = int((second - hour * 3600) / 60)
-        second = int(second - hour * 3600 - minute * 60)
-        return "{}h{}m{}s".format(hour, minute, second)
